@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "982919755646",
+    "project_id": "puntodventa-147f9",
+    "storage_bucket": "puntodventa-147f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982919755646:android:4d20084a9f39c6ff5b652f",
+        "android_client_info": {
+          "package_name": "com.example.puntodventa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxGac3le8Pd6y9TKulsPDUzgzxxj-_kws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
