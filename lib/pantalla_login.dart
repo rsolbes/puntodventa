@@ -13,7 +13,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final FocusNode _passwordFocusNode = FocusNode(); // FocusNode para el campo de contraseña
+  final FocusNode _passwordFocusNode = FocusNode();
 
   void _login() async {
     try {
@@ -41,9 +41,8 @@ class _LoginScreenState extends State<LoginScreen> {
             TextField(
               controller: _emailController,
               decoration: const InputDecoration(labelText: 'Email'),
-              textInputAction: TextInputAction.next, // Cambia el botón de acción a "Siguiente"
+              textInputAction: TextInputAction.next,
               onSubmitted: (_) {
-                // Al presionar "Siguiente", enfoca el campo de contraseña
                 FocusScope.of(context).requestFocus(_passwordFocusNode);
               },
             ),
@@ -51,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: _passwordController,
               decoration: const InputDecoration(labelText: 'Password'),
               obscureText: true,
-              focusNode: _passwordFocusNode, // Asigna el FocusNode al campo de contraseña
+              focusNode: _passwordFocusNode,
             ),
             const SizedBox(height: 20),
             ElevatedButton(onPressed: _login, child: const Text('Login')),

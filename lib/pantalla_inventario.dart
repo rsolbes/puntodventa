@@ -19,21 +19,18 @@ class _InventoryScreenState extends State<InventoryScreen> {
   }
 
   Future<void> _agregarOActualizarProducto(Map<String, dynamic> nuevoProducto) async {
-    // Verifica si el producto ya existe en la colección
     var productosExistentes = await _firestore
         .collection('productos')
         .where('nombre', isEqualTo: nuevoProducto['nombre'])
         .get();
 
     if (productosExistentes.docs.isNotEmpty) {
-      // Si el producto ya existe, actualiza la cantidad sumando la cantidad nueva
       var productoExistente = productosExistentes.docs.first;
       int cantidadExistente = productoExistente['cantidad'];
       await _firestore.collection('productos').doc(productoExistente.id).update({
         'cantidad': cantidadExistente + nuevoProducto['cantidad'],
       });
     } else {
-      // Si el producto no existe, crea un nuevo documento
       await _firestore.collection('productos').add(nuevoProducto);
     }
   }
@@ -52,7 +49,7 @@ class _InventoryScreenState extends State<InventoryScreen> {
                   .map((doc) => doc['categoria'] ?? 'Sin categoría')
                   .toSet()
                   .toList();
-              categorias.insert(0, 'Todas'); // Opción para mostrar todas las categorías
+              categorias.insert(0, 'Todas');
               
               return DropdownButton<String>(
                 value: categoriaSeleccionada,

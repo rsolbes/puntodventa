@@ -60,7 +60,6 @@ class OrderManagementScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () async {
-                // Verificar que no haya un número de orden duplicado
                 final querySnapshot = await _firestore
                     .collection('ordenes')
                     .where('numero', isEqualTo: int.tryParse(numeroController.text))
@@ -71,7 +70,6 @@ class OrderManagementScreen extends StatelessWidget {
                     const SnackBar(content: Text('El número de orden ya existe.')),
                   );
                 } else {
-                  // Verificar que no haya productos con cantidad <= 0
                   bool cantidadInvalida = false;
                   for (var producto in orden['productos']) {
                     if (producto['cantidad'] <= 0) {

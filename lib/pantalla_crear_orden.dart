@@ -17,7 +17,6 @@ class _CrearOrdenScreenState extends State<CrearOrdenScreen> {
 
   Future<void> _crearOrden() async {
     if (_formKey.currentState!.validate() && productosSeleccionados.isNotEmpty) {
-      // Verificar que el número de orden no esté duplicado
       final querySnapshot = await _firestore
           .collection('ordenes')
           .where('numero', isEqualTo: int.tryParse(_numeroController.text))
@@ -30,7 +29,6 @@ class _CrearOrdenScreenState extends State<CrearOrdenScreen> {
         return;
       }
 
-      // Validar que los productos no tengan cantidades <= 0
       for (var producto in productosSeleccionados) {
         if (producto['cantidad'] <= 0) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -57,7 +55,6 @@ class _CrearOrdenScreenState extends State<CrearOrdenScreen> {
     );
 
     if (resultado != null) {
-      // Validar que la cantidad del producto sea mayor a 0
       if (resultado['cantidad'] > 0) {
         setState(() {
           productosSeleccionados.add(resultado);
